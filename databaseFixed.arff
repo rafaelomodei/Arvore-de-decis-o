@@ -1,0 +1,14 @@
+@relation avaliation
+
+@attribute topografia {aclive, declive, plano, irregular}
+@attribute utilizacao {residencial, comercial, terreno}
+@attribute conservacao {otimo, bom, regular, mau}
+@attribute esgoto {sim, nao}
+@attribute pavimentacao {poliedrico, asfalto, irregular}
+@attribute preco numeric
+@attribute distanciaUTFPR numeric
+@attribute distanciaPracaCentral numeric
+@attribute chaceAceitarPreco numeric
+@attribute chaceAceitacaoGeral {0,1}
+
+@data
