@@ -1,9 +1,3 @@
-MIM_DISTANCE: int = 1
-MAX_DISTANCE: int = 20
-
-MIM_PRICE: int = 100
-MAX_PRICE: int = 900
-
 HEADER_DB = f'@relation avaliation\n\n'\
             + f"@attribute topografia {{aclive, declive, plano, irregular}}\n"\
             + f'@attribute utilizacao {{residencial, comercial, terreno}}\n'\
@@ -12,7 +6,16 @@ HEADER_DB = f'@relation avaliation\n\n'\
             + f'@attribute pavimentacao {{poliedrico, asfalto, irregular}}\n'\
             + f'@attribute preco numeric\n'\
             + f'@attribute distanciaUTFPR numeric\n'\
-            + f'@attribute distanciaPracaCentral numeric\n'\
-            + f'@attribute chaceAceitarPreco numeric\n'\
-            + f'@attribute chaceAceitacaoGeral {{0,1}}\n\n'\
+            + f'@attribute distanciaPracaCentral numeric\n\n'\
             + f'@data\n'
+            # + f'@attribute accessToHealth {{ruim, bom, otimo}}\n'\
+            # + f'@attribute securityLevel {{ruim, bom, otimo}}\n'\
+            # + f'@attribute firefighter {{ruim, bom, otimo}}\n'\
+            # + f'@attribute internetOptions {{ruim, bom, otimo}}\n'\
+            # + f'@attribute operatorSignal {{ruim, bom, otimo}}\n'\
+            # + f'@attribute leisureArea {{ruim, bom, otimo}}\n'\
+            # + f'@attribute mobility {{ruim, bom, otimo}}\n'\
+            # + f'@attribute location {{ruim, bom, otimo}}\n'\
+            # + f'@attribute supplyAndDemand numeric\n'\
+            # + f'@attribute consumePower {{baixo, medio, alto}}\n\n'\
+            # + f'@data\n'

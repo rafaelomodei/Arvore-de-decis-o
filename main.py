@@ -8,13 +8,13 @@ def main():
 
     listDistricts: List[District] = list()
 
-    for index in range(10000):
+    for index in range(1000):
         listDistricts.append(District())
 
     for district in listDistricts:
         print(district)
-    
-    # writeInArchive(listDistricts)
+
+    writeInArchive(listDistricts)
 
 
 if __name__ == "__main__":
