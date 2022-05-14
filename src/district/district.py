@@ -22,7 +22,7 @@ class District:
     mobility: Enum
     location: Enum
     consumePower: Enum
-    price: float
+    price: float or str
     distanceUTFPR: float
     centralSquareDistance: float
     supplyAndDemand: float
@@ -43,8 +43,8 @@ class District:
         self.mobility = randomDataEnum(Mobility)
         self.location = randomDataEnum(Location)
         self.consumePower = randomDataEnum(ConsumePower)
-        self.centralSquareDistance = randomDistance() * 10
-        self.distanceUTFPR = randomDistance() * 10 
+        self.centralSquareDistance = randomDistance()
+        self.distanceUTFPR = randomDistance()
         self.priceSquareMeter()
         self.calcSupplyAndDemand()
 
@@ -77,26 +77,48 @@ class District:
             + f'{self.utilization.name}, '\
             + f'{self.conservation.name}, '\
             + f'{self.sewer.name}, '\
-            + f'{self.pavimentation.name}, '\
             + "{:.2f}, ".format(self.price)\
             + f'{self.distanceUTFPR}, '\
-            + f'{self.centralSquareDistance}\n'
-            # + "{:.2f}, ".format(self.price)\
-            # + f'{self.accessToHealth.name}, '\
-            # + f'{self.securityLevel.name}, '\
-            # + f'{self.firefighter.name}, '\
-            # + f'{self.internetOptions.name}, '\
-            # + f'{self.operatorSignal.name}, '\
-            # + f'{self.leisureArea.name}, '\
-            # + f'{self.mobility.name}, '\
-            # + f'{self.location.name}, '\
-            # + "{:.2f}, ".format(self.supplyAndDemand)\
-            # + f'{self.consumePower.name}\n'
+            + f'{self.centralSquareDistance}, '\
+            + f'{self.pavimentation.name}, '\
+            + f'{self.accessToHealth.name}, '\
+            + f'{self.securityLevel.name}, '\
+            + f'{self.firefighter.name}, '\
+            + f'{self.internetOptions.name}, '\
+            + f'{self.operatorSignal.name}, '\
+            + f'{self.leisureArea.name}, '\
+            + f'{self.mobility.name}, '\
+            + f'{self.location.name}, '\
+            + "{:.2f}, ".format(self.supplyAndDemand)\
+            + f'{self.consumePower.name}\n'
+
+        return values
+    
+    def writeID3(self) -> str:
+
+        values: str = f'{self.topography.name}, '\
+            + f'{self.utilization.name}, '\
+            + f'{self.conservation.name}, '\
+            + f'{self.sewer.name}, '\
+            + f'{generalizeValue(self.price)}, '\
+            + f'{generalizeValue(self.distanceUTFPR)}, '\
+            + f'{generalizeValue(self.centralSquareDistance)}, '\
+            + f'{self.pavimentation.name}, '\
+            + f'{self.accessToHealth.name}, '\
+            + f'{self.securityLevel.name}, '\
+            + f'{self.firefighter.name}, '\
+            + f'{self.internetOptions.name}, '\
+            + f'{self.operatorSignal.name}, '\
+            + f'{self.leisureArea.name}, '\
+            + f'{self.mobility.name}, '\
+            + f'{self.location.name}, '\
+            + f'{generalizeValue(self.supplyAndDemand)}, '\
+            + f'{self.consumePower.name}\n'
 
         return values
 
     def basicItems(self) -> float:
-        _totalAttributes: int = 7
+        _totalAttributes: int = 16
 
         sum: float = self.topography.value\
             + self.utilization.value\
@@ -104,21 +126,21 @@ class District:
             + self.pavimentation.value\
             + self.sewer.value\
             + self.distanceUTFPR\
-            + self.centralSquareDistance
-            # + self.consumePower.value\
-            # + self.accessToHealth.value\
-            # + self.securityLevel.value\
-            # + self.firefighter.value\
-            # + self.internetOptions.value\
-            # + self.operatorSignal.value\
-            # + self.leisureArea.value\
-            # + self.mobility.value\
-            # + self.location.value
+            + self.centralSquareDistance\
+            + self.consumePower.value\
+            + self.accessToHealth.value\
+            + self.securityLevel.value\
+            + self.firefighter.value\
+            + self.internetOptions.value\
+            + self.operatorSignal.value\
+            + self.leisureArea.value\
+            + self.mobility.value\
+            + self.location.value
 
         return sum / _totalAttributes
 
     def priceSquareMeter(self) -> None:
-        _totalAttributes: int = 7
+        _totalAttributes: int = 10
 
         sum: float = self.topography.value\
             + self.utilization.value\
@@ -126,14 +148,14 @@ class District:
             + self.sewer.value\
             + self.pavimentation.value\
             + self.distanceUTFPR\
-            + self.centralSquareDistance
-            # + self.consumePower.value\
-            # + self.mobility.value\
-            # + self.location.value\
+            + self.centralSquareDistance\
+            + self.consumePower.value\
+            + self.mobility.value\
+            + self.location.value
 
         result: float = sum / _totalAttributes
 
-        self.price = result * 10
+        self.price = result
 
     def unemploymentRate(self) -> float:
         _totalAttributes: int = 2
